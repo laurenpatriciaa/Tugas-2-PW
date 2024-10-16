@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Flexbox to place the form and the image side by side after submit */
+.form-container {
+    display: flex;
+    justify-content: center; /* Center content */
+    flex-wrap: wrap; /* Allow wrapping */
+    width: 100%;
+    max-width: 900px; /* Maximum width for better responsiveness */
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.form-section {
+    flex: 1; /* Allow the form section to grow */
+    min-width: 300px; /* Minimum width for better responsiveness */
+    transition: width 0.5s ease; /* Smooth transition on submit */
+}
+
+input[type="text"], input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.display-container {
+    flex: 1; /* Allow the display container to grow */
+    min-width: 300px; /* Minimum width for better responsiveness */
+    display: flex; /* Use flexbox to align items */
+    justify-content: center; /* Center items */
+    align-items: flex-start; /* Align items to the start */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    margin-left: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.display-container img {
+    max-width: 0%; /* Set maximum width for the image */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 20px 0 0; /* Right margin for space between image and table */
+}
+
+.display-container .info-table {
+    width: 40%; /* Set the table to take a portion of the container */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    font-size: 14px; /* Font size for better fit */
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.display-container .info-table td {
+    padding: 6px 0; /* Table cell padding */
+    font-size: 14px; /* Font size for better fit */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .display-container {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        align-items: center; /* Center align items */
+    }
+
+    .display-container img {
+        max-width: 100%; /* Full width for the image */
+        margin: 0 0 20px 0; /* Remove right margin and add bottom margin */
+    }
+
+    .display-container .info-table {
+        width: 100%; /* Full width for the table on smaller screens */
+    }
+}
+
+.success-notification, .notification {
+    background-color: #f8f9fa;
+    border: 1px solid #007bff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden;
+}
+
+.success-notification.active, .notification.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.success-notification p, .notification p {
+    margin-bottom: 10px;
+}
+
+.success-notification button, .notification button {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.success-notification button:hover, .notification button:hover {
+    background-color: #218838;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column; /* Stack elements on smaller screens */
+        align-items: center;
+    }
+
+    .display-container {
+        margin-left: 0; /* Remove left margin on small screens */
+        margin-top: 20px; /* Ensure space above */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em; /* Adjust title size for smaller screens */
+    }
+
+    input[type="text"], input[type="file"], button {
+        font-size: 14px; /* Adjust button and input font size */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
